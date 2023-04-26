@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/HasibullahAman/ES6-Module/issues"
   },
-  "homepage": "https://github.com/HasibullahAman/ES6-Module#readme"
+  "homepage": "https://github.com/HasibullahAman/ES6-Module#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2"
+  }
 }
