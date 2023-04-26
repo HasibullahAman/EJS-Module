@@ -6,7 +6,16 @@ const app = express();
 
 
 app.get('/', function(req, res) {
-    res.send("Hello again");
+    var today = new Date();
+
+    if (today.getDay() === 6 || today.getDay() === 0) {
+        res.send("Hey I'm Happy today because it's free day")
+    } else {
+        res.send("Oh my god I have to work!!!!!!!!!!!!!!!!")
+    }
+
+
+
 })
 
 
