@@ -43,12 +43,21 @@ const bodyParser = require('body-parser');
 
 let app = express();
 
+
+
 app.set('view engine', 'ejs');
+var today = new Date();
+var curentday = today.getDay();
+var day = "";
 
 app.get('/', (req, res) => {
-    res.render('index', {
-        foo: 'FOO'
-    })
+    if (curentday == 6 || curentday == 0) {
+        day = 'weekend';
+    } else {
+        day = 'weekday'
+    }
+    res.render('list', { kindOfDay: day });
+
 })
 
 
