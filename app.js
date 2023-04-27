@@ -50,21 +50,49 @@ var today = new Date();
 var curentday = today.getDay();
 var day = "";
 
+// app.get('/', (req, res) => {
+//     if (curentday == 6) {
+//         day = 'Friday';
+//     } else if (curentday === 0) {
+//         day = 'Staturday'
+//     } else if (curentday === 1) {
+//         day = 'sunday'
+//     } else if (curentday === 2) {
+//         day = 'monday'
+//     } else if (curentday === 3) {
+//         day = 'thusday'
+//     } else if (curentday === 4) {
+//         day = 'Wedenday'
+//     } else if (curentday === 5) {
+//         day = "thursday"
+//     }
+//     res.render('list', { kindOfDay: day });
+// });
 app.get('/', (req, res) => {
-    if (curentday == 6) {
-        day = 'Friday';
-    } else if (curentday === 0) {
-        day = 'Staturday'
-    } else if (curentday === 1) {
-        day = 'sunday'
-    } else if (curentday === 2) {
-        day = 'monday'
-    } else if (curentday === 3) {
-        day = 'thusday'
-    } else if (curentday === 4) {
-        day = 'Wedenday'
-    } else if (curentday === 5) {
-        day = "thursday"
+    switch (curentday) {
+        case 0:
+            day = 'Saturday';
+            break;
+        case 1:
+            day = 'Sunday';
+            break;
+        case 2:
+            day = 'Monday';
+            break;
+        case 3:
+            day = 'Tuesday';
+            break;
+        case 4:
+            day = 'Wednesday';
+            break;
+        case 5:
+            day = 'Thursday';
+            break;
+        case 6:
+            day = 'Friday';
+            break;
+        default:
+            console.log('Error: current day is invalid');
     }
     res.render('list', { kindOfDay: day });
 });
