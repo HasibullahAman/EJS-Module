@@ -51,13 +51,22 @@ var curentday = today.getDay();
 var day = "";
 
 app.get('/', (req, res) => {
-    if (curentday == 6 || curentday == 0) {
-        day = 'weekend';
-    } else {
-        day = 'weekday'
+    if (curentday == 6) {
+        day = 'Friday';
+    } else if (curentday === 0) {
+        day = 'Staturday'
+    } else if (curentday === 1) {
+        day = 'sunday'
+    } else if (curentday === 2) {
+        day = 'monday'
+    } else if (curentday === 3) {
+        day = 'thusday'
+    } else if (curentday === 4) {
+        day = 'Wedenday'
+    } else if (curentday === 5) {
+        day = "thursday"
     }
     res.render('list', { kindOfDay: day });
-
 });
 
 
