@@ -23,14 +23,33 @@
 //     console.log("Server is run on port 3000 Now: ")
 // })
 
-let express = require('express');
-const bodyParser = require("body-parser");
+// let express = require('express');
+// const bodyParser = require("body-parser");
+// let app = express();
+
+// app.set('view engine', 'ejs');
+
+// app.get('/', (req, res) => {
+//     res.render('index', { foo: 'FOO' });
+// });
+
+// app.listen(3000, () => console.log('Example app listening on port 3000!'));
+
+
+
+
+let express = require("express");
+const bodyParser = require('body-parser');
+
 let app = express();
 
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-    res.render('index', { foo: 'FOO' });
-});
+    res.render('index', {
+        foo: 'FOO'
+    })
+})
+
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'));
