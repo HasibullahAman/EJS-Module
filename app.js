@@ -109,16 +109,13 @@ const bodyParser = require("body-parser");
 
 
 let app = express();
-
-
+var item = "";
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 
 var today = new Date();
 var curentday = today.getDay();
-
-var day = '';
-var item = '';
+var day = "";
 app.get('/', (req, res) => {
     var options = {
         weekday: 'long',
@@ -131,8 +128,11 @@ app.get('/', (req, res) => {
         NewItems: item,
     });
 });
+
+
 app.post('/', (req, res) => {
-    var item = req.body.newItem;
+    item = req.body.newItem;
+
     res.redirect('/')
 });
 
