@@ -32,10 +32,18 @@
         <li>Buy Food</li>
         <li>Cook Food</li>
         <li>Eat Food</li>
-        <li>
+        <!-- <li>
             <%=NewItems%>
-        </li>
+        </li> -->
+
+        <% for(var i=0; i<NewItems.length;i++) { %>
+            <li>
+                <%=NewItems[i]%>
+            </li>
+            <% } %>
     </ul>
+
+
     <form action="/" method="POST">
         <input type="text" name="newItem" placeholder="enter your task">
         <button type="submit" name="button">Submit</button>
