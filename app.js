@@ -118,7 +118,7 @@ var today = new Date();
 var curentday = today.getDay();
 
 var day = '';
-
+var item = '';
 app.get('/', (req, res) => {
     var options = {
         weekday: 'long',
@@ -128,11 +128,12 @@ app.get('/', (req, res) => {
     var day = today.toLocaleString('en-US', options);
     res.render('list', {
         kindOfDay: day,
+        NewItems: item,
     });
 });
 app.post('/', (req, res) => {
     var item = req.body.newItem;
-    console.log(item);
+    res.redirect('/')
 });
 
 
