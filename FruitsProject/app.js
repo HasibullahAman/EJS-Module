@@ -1,29 +1,22 @@
-const mongoClient = require('mongodb').MongoClient;
-const assert = require('assert');
+const express = require('express');
+const mongoose = require('mongoose');
 
+const app = express();
+const port = 3000;
 
-// connection URL
+// Connect to MongoDB
+mongoose.connect('mongodb://localhost:27017/shopDB', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
 
-const url = 'mongodb://localhost:27017';
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+    console.log('Connected to MongoDB database');
+});
 
-
-
-// Database Name
-const dbname = 'myproject';
-
-
-// Create a new mongoClient
-
-const client = new mongoClient(url);
-
-// Use connet method to connect the server
-
-client.connect(function(err) {
-    assert.equal(null, err);
-    console.log("connect with server wass successfuly!");
-
-
-    const db = client.db(dbName);
-
-    client.close();
-})
+// Start the server
+app.listen(port, () => {
+    console.log(`Server listening on port ${port}`);
+});
