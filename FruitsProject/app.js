@@ -7,8 +7,15 @@ const port = 3000;
 // Connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/shopDB', {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    // useUnifiedTopology: true
 });
+
+const fruitSchema = new mongoose.Schema({
+    name: String,
+    rating: Number,
+    review: String
+})
+
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
