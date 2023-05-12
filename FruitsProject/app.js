@@ -5,7 +5,7 @@ const app = express();
 const port = 3000;
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/shopDB', {
+mongoose.connect('mongodb://localhost:27017/ShopDBM', {
     useNewUrlParser: true,
     // useUnifiedTopology: true
 });
@@ -15,6 +15,31 @@ const fruitSchema = new mongoose.Schema({
     rating: Number,
     review: String
 })
+
+const Fruit = mongoose.model("Fruit", fruitSchema);
+const fruit = new Fruit({
+    name: "Apple",
+    rating: 5.3,
+    review: "A good Fruit for eat!"
+})
+
+const PersonSchema = new mongoose.Schema({
+    name: String,
+    age: Number
+})
+
+const Person = mongoose.model("Person", PersonSchema);
+
+const person = new Person({
+    name: "Ahmad",
+    age: 25
+
+})
+
+// fruit.save();
+
+
+
 
 
 const db = mongoose.connection;
