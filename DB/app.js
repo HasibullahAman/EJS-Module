@@ -15,7 +15,11 @@ mongoose.connect("mongodb://127.0.0.1:27017/mydatabase", {
 
 const FruitSchema = new mongoose.Schema({
     name: String,
-    rating: Number,
+    rating: {
+        type: Number,
+        min: 1,
+        max: 10,
+    },
     review: String,
 });
 
