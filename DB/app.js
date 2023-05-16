@@ -14,7 +14,10 @@ mongoose.connect("mongodb://127.0.0.1:27017/mydatabase", {
 // ---------------------------- defult
 
 const FruitSchema = new mongoose.Schema({
-    name: String,
+    name: {
+        type: String,
+        required: true,
+    },
     rating: {
         type: Number,
         min: 1,
@@ -25,32 +28,43 @@ const FruitSchema = new mongoose.Schema({
 
 const Fruit = mongoose.model("Fruit", FruitSchema);
 
-// const apple = new Fruit({
-//     name: "Apple",
-//     rating: 5,
-//     review: "A good fruit for eating",
-// });
+const apple = new Fruit({
+    name: "Apple",
+    rating: 4,
+    review: "A good fruit for eating",
+});
 
-// const banana = new Fruit({
-//     name: "Banana",
-//     rating: 4,
-//     review: "A tasty fruit",
-// });
+const banana = new Fruit({
+    name: 'banana',
+    rating: 4,
+    review: "A tasty fruit",
+});
 
-// const orange = new Fruit({
-//     name: "Orange",
-//     rating: 3,
-//     review: "Juicy and sweet",
-// });
+const orange = new Fruit({
+    name: "Orange",
+    rating: 3,
+    review: "Juicy and sweet",
+});
 
-// const defaultFruits = [apple, banana, orange];
-// Fruit.insertMany(defaultFruits)
-//     .then(() => {
-//         console.log("Successfully saved default fruits to DB");
-//     })
-//     .catch((error) => {
-//         console.log(error);
-//     });
+const mellon = new Fruit({
+    name: "mellonjan",
+    rating: 3,
+    review: "it's so good for every thing you know!"
+})
+const tometo = new Fruit({
+    name: "tometo",
+    rating: 4,
+    review: "you know it's kind of fruits!"
+})
+
+const defaultFruits = [apple, banana, orange, mellon, tometo];
+Fruit.insertMany(defaultFruits)
+    .then(() => {
+        console.log("Successfully saved default fruits to DB");
+    })
+    .catch((error) => {
+        console.log(error);
+    });
 
 
 
@@ -66,18 +80,15 @@ const Fruit = mongoose.model("Fruit", FruitSchema);
 
 Fruit.find({})
     .then((fruits) => {
-        fruits.forEach(function(fruit) {
-            console.log(fruit.name);
-        });
+        console.log(fruits)
+            // fruits.forEach(function(fruit) {
+            //     console.log(fruit.name);
+            // });
         mongoose.connection.close(); // add this line to close the connection
     })
     .catch((error) => {
         console.log(error);
     });
-
-// app.listen(port, function() {
-//     console.log("Server started on port " + port);
-// });
 
 
 
@@ -86,8 +97,8 @@ app.listen(port, function() {
     console.log("Server started on port " + port);
 });
 
-// mongoose.connection.once("open", function() {
-//     console.log("Connection has been made, now make fireworks...");
-// }).on("error", function(error) {
-//     console.log("Connection error: ", error);
-// });
+mongoose.connection.once("open", function() {
+    console.log("Connection has been made, now make fireworks...");
+}).on("error", function(error) {
+    console.log("Connection error: ", error);
+});
